@@ -1,0 +1,15 @@
+<h2 mat-dialog-title>Create new task</h2>
+<div mat-dialog-content>
+    <mat-form-field>
+        <input matInput [(ngModel)]="name" placeholder="task name">
+        <mat-error *ngIf="name === null || name.length === 0">Name is required</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput [(ngModel)]="description" placeholder="task description">
+        <mat-error *ngIf="description === null || description.length === 0">Description is required</mat-error>
+      </mat-form-field>      
+</div>
+<div mat-dialog-actions>
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button (click)="onOkClick()" cdkFocusInitial>Ok</button>
+</div>

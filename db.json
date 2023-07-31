@@ -1,0 +1,45 @@
+{
+  "board": {
+    "name": "Test Board",
+    "columns": [
+      {
+        "name": "To Do",
+        "tasks": [
+          {
+            "name": "Nova task",
+            "description": "aa"
+          },
+          {
+            "name": "Another task",
+            "description": "Needs a description"
+          }
+        ],
+        "canBeRenamedOrDeleted": false
+      },
+      {
+        "name": "Doing",
+        "tasks": [],
+        "canBeRenamedOrDeleted": false
+      },
+      {
+        "name": "Done",
+        "tasks": [],
+        "canBeRenamedOrDeleted": false
+      },
+      {
+        "name": "Redo",
+        "tasks": [
+          {
+            "name": "OPA",
+            "description": "aaa"
+          },
+          {
+            "name": "Test",
+            "description": "TestTestTestTestTestTestTestTestTestTestTestTestTest"
+          }
+        ],
+        "canBeRenamedOrDeleted": true
+      }
+    ]
+  }
+}

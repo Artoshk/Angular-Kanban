@@ -1,0 +1,54 @@
+<div clas="root">
+    <div class="navbar has-background-dark">
+        <div class="navbar-brand">
+            <div class="navbar-item">
+                <h1 class="app-name has-gradient-text">Graphics design is my passion</h1>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="isLoadingData">
+        <div class="loading-spinner">
+            <div class="spinner"></div>
+            <div class="text">Loading</div>
+          </div>          
+    </div>
+    <div *ngIf="!isLoadingData">
+        <div class="board">
+
+            <div class="board-bar">
+                <p class="board-name">{{board.name}}</p>
+            </div>
+
+            <div class="board-wrapper">
+                <div class="board-columns" cdkDropListGroup>
+                    <div class="board-column" *ngFor="let column of board.columns">
+                        <div class="column-title">
+                            <div (click)="changeColumnName(column)">
+                                {{column.name}}
+                            </div>
+                            <button class="dropdown-button" [matMenuTriggerFor]="columnMenu"></button>
+                            <mat-menu #columnMenu="matMenu">
+                                <button mat-menu-item *ngIf="column.canBeRenamedOrDeleted" (click)="deleteColumn(column)">Delete Column</button>
+                                <button mat-menu-item (click)="addTask(column)">Add Task</button>
+                            </mat-menu>
+                        </div>
+                        <div class="tasks-container" cdkDropList [cdkDropListData]="column.tasks" (cdkDropListDropped)="drop($event)">
+                            <div class="task" *ngFor="let item of column.tasks" cdkDrag>
+                                <div class="scale-with-task">
+                                    <div class="task-header">
+                                        <div class="task-name">{{item.name}}</div>
+                                        <button class="delete-button" (click)="deleteTask(column, item)">X</button>                            
+                                    </div>
+                                    <div class="task-description">{{item.description}}</div>
+                                </div>
+                            </div>
+                        </div>
+                            
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="button" (click)="addColumn()">+</button>
+    </div>
+</div>
